@@ -16,12 +16,30 @@ enum Role {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  telegramId   BigInt   @unique @map("telegram_id")
-  languageCode String?  @map("language_code")
-  role         Role     @default(USER)
-  updatedAt    DateTime @updatedAt @map("updated_at")
-  createdAt    DateTime @default(now()) @map("created_at")
+  id           String  @id @default(cuid())
+  telegramId   BigInt  @unique
+  languageCode String?
+  role         Role    @default(USER)
+  marks        Mark[]
 
-  @@map(name: "users")
+  @@map("users")
+}
+
+model Video {
+  id        String @id @default(cuid())
+  sourceUrl String @unique
+  marks     Mark[]
+
+  @@map("videos")
+}
+
+model Mark {
+  id      String  @id @default(cuid())
+  videoId String
+  video   Video   @relation(fields: [videoId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  isLiked Boolean
+  userId  String
+  user    User    @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@map("marks")
 }

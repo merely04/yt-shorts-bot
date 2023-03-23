@@ -2,6 +2,7 @@ import { createContainer } from "iti";
 import { config } from "~/config";
 import { createLogger } from "~/logger";
 import { createPrisma } from "~/prisma";
+import { VideoService } from "~/services";
 
 export const createAppContainer = () =>
   createContainer()
@@ -13,6 +14,9 @@ export const createAppContainer = () =>
     }))
     .add((items) => ({
       prisma: () => createPrisma(items.logger),
+    }))
+    .add((items) => ({
+      videoService: () => new VideoService({ ...items }),
     }));
 
 export type Container = ReturnType<typeof createAppContainer>;

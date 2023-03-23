@@ -1,6 +1,6 @@
-start_command = 
+start_command =
     .description = Start the bot
-language_command = 
+language_command =
     .description = Change language
 admin_command =
     .description = Make user an administrator
@@ -9,8 +9,9 @@ stats_command =
 setcommands_command =
     .description = Set bot commands
 
-welcome = 👋🏻  Welcome!
-language = 
+welcome = Welcome, <b>{$name}</b> 👋
+
+language =
     .select = Please, select your language
     .changed = Language successfully changed!
 admin =
@@ -26,6 +27,20 @@ admin =
         *[USER] a regular user
         [ADMIN] an administrator
     }.
-    
-    .commands-updated = Commands updated.
+
+    .commands-updated = Commands updated
+
 unhandled = Unrecognized command. Try /start
+
+main =
+    .video-btn = ⚡ New video
+    .liked-videos-btn = 😍 Liked videos
+    .update = Keyboard updated
+
+marks =
+    .list = Video list
+    .empty = You haven't liked a single video
+
+video =
+    .description = Video description
+    .empty = Couldn't pick up a video

@@ -29,7 +29,8 @@
         "consistent-return": "off",
         "import/prefer-default-export": "off",
         "import/extensions": "off",
-        "no-underscore-dangle": "off"
+        "no-underscore-dangle": "off",
+        "no-param-reassign": "warn"
     },
     "settings": {
         "import/parsers": {

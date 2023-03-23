@@ -1,7 +1,0 @@
-{
-    "recommendations": [
-        "dbaeumer.vscode-eslint",
-        "prisma.prisma",
-        "macabeus.vscode-fluent"
-    ]
-}

@@ -1,7 +1,9 @@
 import { Prisma, PrismaClient } from "@prisma/client";
 import { Logger } from "~/logger";
 
+import markExtension from "~/prisma/mark.extension";
 import userExtension from "~/prisma/user.extension";
+import videoExtension from "./video.extension";
 
 const parseParameters = (parameters: string): unknown[] => {
   try {
@@ -81,7 +83,14 @@ export const createPrisma = (logger: Logger) => {
     });
   });
 
-  return prisma.$extends(userExtension);
+  return prisma
+    .$extends(userExtension)
+    .$extends(videoExtension)
+    .$extends(markExtension);
+  // prisma.$extends(videoExtension);
+  // prisma.$extends(markExtension);
+
+  // return prisma;
 };
 
 export type PrismaClientX = ReturnType<typeof createPrisma>;

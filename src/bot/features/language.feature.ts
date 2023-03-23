@@ -3,7 +3,10 @@ import { changeLanguageData } from "~/bot/callback-data";
 import type { Context } from "~/bot/context";
 import { logHandle } from "~/bot/helpers/logging";
 import { i18n } from "~/bot/i18n";
-import { createChangeLanguageKeyboard } from "~/bot/keyboards";
+import {
+  createChangeLanguageKeyboard,
+  createMainKeyboard,
+} from "~/bot/keyboards";
 
 const composer = new Composer<Context>();
 
@@ -35,6 +38,9 @@ feature.callbackQuery(
 
       await ctx.editMessageText(ctx.t("language.changed"), {
         reply_markup: await createChangeLanguageKeyboard(ctx),
+      });
+      return ctx.reply(ctx.t("main.update"), {
+        reply_markup: await createMainKeyboard(ctx),
       });
     }
   }
